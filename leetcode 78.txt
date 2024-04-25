@@ -1,0 +1,14 @@
+class Solution:
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        ans=[]
+        n=len(nums)
+        def helper(op,start_index):
+            if start_index==n:
+                ans.append(list(op))
+                return
+            op.append(nums[start_index])
+            helper(op,start_index+1)
+            op.pop()
+            helper(op,start_index+1)
+        helper([],0)
+        return ans
