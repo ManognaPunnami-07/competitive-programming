@@ -1,0 +1,14 @@
+class Solution:
+    def maxSubarraySumCircular(self, nums: List[int]) -> int:
+        total=0
+        maxsum=nums[0]
+        minsum=nums[0]
+        curmax=0
+        curmin=0
+        for i in nums:
+            curmax=max(i,curmax+i)
+            maxsum=max(maxsum,curmax)
+            curmin=min(i,curmin+i)
+            minsum=min(minsum,curmin)
+            total+=i
+        return max(maxsum,total-minsum) if maxsum>0 else maxsum
